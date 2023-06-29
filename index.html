@@ -12,18 +12,21 @@
         <h1>PASSWORD GENERATOR</h1>
 
         <!-- Inpute PassWord copy here -->
-        <div>
-          <input type="text" name="pass" id="password" readonly data-passwordDisplay/>
-          <button data-copy>
+        <div class="display-container">
+
+          <input placeholder="Password" class="display" readonly data-passwordDisplay/>
+
+          <button class="copyBtn" data-copy>
             <span class="tooltip" data-copyMsg></span>
             <i class="fa fa-copy"></i>
         </button>
         </div>
          
         <!-- All Function Box -->
-        <div>
+        <div class="input-container">
+          
           <!-- Passsword length -->
-          <div>
+          <div class="length-container">
             <p>Password Length</p>
             <p data-lengthNumber>0</p>
           </div>
@@ -70,8 +73,8 @@
            </div>
            
         </div>
-    </div>
 
+    </div>
     <script src="https://kit.fontawesome.com/c33a357a73.js" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
 
