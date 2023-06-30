@@ -13,7 +13,6 @@ const generateBtn = document.querySelector(".generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 
-console.log("stage 1");
 
 //initially
 let password = "";
@@ -38,8 +37,6 @@ function handalSlider() {
 
 }
 
-console.log("stage 2");
-
 
 // After Notice 
 function setIndicator(color) {
@@ -47,24 +44,24 @@ function setIndicator(color) {
     indicator.style.boxShadow = `0px 0px 12px 1px ${color}`;
 }
 
-function randamInteger(max, min) {
+function randomInteger(max, min) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function genratRandamNumber() {
-    randamInteger(1, 9);
+    randomInteger(1, 9);
 }
 
 function genratUppercase() {
-   return String.fromCharCode(randamInteger(65, 91));
+   return String.fromCharCode(randomInteger(65, 91));
 }
 
 function genrateLowercase() {
-   return String.fromCharCode(randamInteger(97, 123));
+   return String.fromCharCode(randomInteger(97, 123));
 }
 
 function genratSymboll() {
-   const randSymboll = randamInteger(0, symbols.length);
+   const randSymboll = randomInteger(0, symbols.length);
    return symbols.charAt(randSymboll);
 }
 
@@ -103,8 +100,6 @@ function calculatStrangth() {
     }
 }
 
-console.log("stage 3");
-
 
 // After Notice 
 async function copyContent() {
@@ -122,8 +117,6 @@ async function copyContent() {
         copyMsg.classList.remove("active");
     }, 2000);
 }
-
-console.log("stage 4");
 
 
 function shufflePassword(array) {
@@ -166,8 +159,6 @@ copyBtn.addEventListener("click", () => {
     }
 })
 
-console.log("stage 5");
-
 
 generateBtn.addEventListener("click", () => {
     //none of the checkbox are selected
@@ -201,8 +192,7 @@ generateBtn.addEventListener("click", () => {
 
     // compulsory Addition 
     for(let i = 0; i < funcArr.length; i++) {
-        password = password + funcArr[i]();
-        console.log("comp Index" + i);
+        password = password + funcArr[i];
     }
     console.log("COmpulsory adddition done");
 
@@ -216,9 +206,9 @@ generateBtn.addEventListener("click", () => {
 
     // Remaning Addition 
     for (let i = 0; i < passwordLength - funcArr.length; i++) {
-        let randNumInt = randamInteger(0, funcArr.length);
-        console.log("randIndex" + randIndex);
-        password += funcArr[randIndex]();
+        let randNumInt = randomInteger(0, funcArr.length);        
+        console.log("randIndex" + i);
+        password += funcArr[randNumInt];
       }
 
     console.log("Remaining adddition done");
@@ -233,7 +223,5 @@ generateBtn.addEventListener("click", () => {
     //calculate strength
     calculatStrangth();
 
-    console.log("stage 6");
-
-
 })
+
