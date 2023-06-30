@@ -13,6 +13,8 @@ const generateBtn = document.querySelector(".generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 
+console.log("stage 1");
+
 //initially
 let password = "";
 let passwordLength = 10;
@@ -35,6 +37,9 @@ function handalSlider() {
     ((passwordLength - min) * 100) / (max - min) + "% 100%";
 
 }
+
+console.log("stage 2");
+
 
 // After Notice 
 function setIndicator(color) {
@@ -98,6 +103,9 @@ function calculatStrangth() {
     }
 }
 
+console.log("stage 3");
+
+
 // After Notice 
 async function copyContent() {
     try{
@@ -114,6 +122,8 @@ async function copyContent() {
         copyMsg.classList.remove("active");
     }, 2000);
 }
+
+console.log("stage 4");
 
 
 function shufflePassword(array) {
@@ -156,6 +166,9 @@ copyBtn.addEventListener("click", () => {
     }
 })
 
+console.log("stage 5");
+
+
 generateBtn.addEventListener("click", () => {
     //none of the checkbox are selected
     if(checkCount == 0) return;
@@ -188,22 +201,39 @@ generateBtn.addEventListener("click", () => {
 
     // compulsory Addition 
     for(let i = 0; i < funcArr.length; i++) {
-        password += funcArr[i]();
+        password = password + funcArr[i]();
+        console.log("comp Index" + i);
     }
+    console.log("COmpulsory adddition done");
 
     // Remaning Addition 
-    for(let i = 0; i < passwordLength - funcArr.length; i++) {
-        let randNumInt = randamInteger(0, funcArr.length);
-        password += funcArr[randNumInt]();
-    }
+    // for(let i = 0; i < passwordLength - funcArr.length; i++) {
+    //     let randNumInt = randamInteger(0, funcArr.length);
+    //     console.log("randIndex" + randNumInt);
+    //     password = password + funcArr[randNumInt]();
+    //     console.log("Remaining adddition done" + i);
+    // }
 
+    // Remaning Addition 
+    for (let i = 0; i < passwordLength - funcArr.length; i++) {
+        let randNumInt = randamInteger(0, funcArr.length);
+        console.log("randIndex" + randIndex);
+        password += funcArr[randIndex]();
+      }
+
+    console.log("Remaining adddition done");
     //shuffle the password
     password = shufflePassword(Array.from(password));
+    console.log("Shuffling done");
  
     //show in UI
     passwordDisplay.value = password;
+    console.log("UI adddition done");
 
     //calculate strength
     calculatStrangth();
+
+    console.log("stage 6");
+
 
 })
